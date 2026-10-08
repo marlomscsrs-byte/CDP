@@ -4684,7 +4684,7 @@ async function api(url,opt={}){
   if(sessionToken)qs.set('token',sessionToken);
   if(Object.keys(body).length)qs.set('data',JSON.stringify(body));
 
-  const requestUrl=base+'/?'+qs.toString();
+  const requestUrl=base+'?'+qs.toString();
   if(requestUrl.length>7500){
     throw Error('Esta operação possui dados demais para o transporte atual. A função será migrada para upload direto em uma próxima etapa.');
   }
