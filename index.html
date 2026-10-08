@@ -4682,7 +4682,7 @@ async function api(url,opt={}){
   if(opt.body){try{body=typeof opt.body==='string'?JSON.parse(opt.body):opt.body}catch{body={raw:opt.body}}}
   body.path=path;body.method=method;body.token=sessionToken;
   u.searchParams.forEach((v,k)=>{if(body[k]===undefined)body[k]=v});
-  const r=await fetch(base+'/',{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)});
+  const r=await fetch(base,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)});
   const text=await r.text();let d={};try{d=text?JSON.parse(text):{}}catch{}
   if(d&&d.error)throw Error(d.error);if(!r.ok)throw Error(`Erro HTTP ${r.status}`);return d;
 }
