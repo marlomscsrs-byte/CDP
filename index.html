@@ -2,10 +2,10 @@
 <html lang="pt-BR">
 <head>
   <!-- CIP favicon -->
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -92,10 +92,10 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;back
  radial-gradient(circle at 28% 50%,rgba(217,184,92,.075),transparent 25%),
  linear-gradient(135deg,#030b14 0%,#071321 55%,#050d17 100%);
 }
-#auth.auth:before{content:"";position:absolute;width:min(620px,52vw);height:min(620px,52vw);left:5vw;top:50%;transform:translateY(-50%);background:url('/CIP.webp') center/contain no-repeat;opacity:.12;filter:drop-shadow(0 20px 50px rgba(0,0,0,.5))}
+#auth.auth:before{content:"";position:absolute;width:min(620px,52vw);height:min(620px,52vw);left:5vw;top:50%;transform:translateY(-50%);background:url('CIP.webp') center/contain no-repeat;opacity:.12;filter:drop-shadow(0 20px 50px rgba(0,0,0,.5))}
 #auth .auth-card{position:relative;z-index:1;width:min(470px,calc(100vw - 40px));background:linear-gradient(145deg,rgba(9,26,41,.97),rgba(5,16,27,.98));border:1px solid #725f2f;border-radius:15px;padding:30px;box-shadow:0 30px 90px rgba(0,0,0,.45)}
 #auth .logo{justify-content:flex-start;margin-bottom:24px}
-#auth .logo .mark{width:62px;height:62px;border-radius:50%;background:#081522 url('/CIP.webp') center/contain no-repeat;border:1px solid #725f2f;font-size:0;box-shadow:0 0 0 5px rgba(217,184,92,.035)}
+#auth .logo .mark{width:62px;height:62px;border-radius:50%;background:#081522 url('CIP.webp') center/contain no-repeat;border:1px solid #725f2f;font-size:0;box-shadow:0 0 0 5px rgba(217,184,92,.035)}
 #auth .logo b{font-size:20px;letter-spacing:.8px}
 #auth .logo small{color:var(--gold);font-weight:800}
 #auth .logo em{display:block;color:#748b9e;font-style:normal;font-size:8px;letter-spacing:1px;margin-top:4px}
@@ -112,7 +112,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;back
 #app.app{position:relative;z-index:1;min-height:100vh;background:transparent}
 #app .side{width:238px;background:rgba(3,11,19,.97);border-right:1px solid #112b3d;padding:22px 13px;z-index:20}
 #app .brand{display:flex;align-items:center;gap:10px;padding:0 6px 21px;border-bottom:1px solid #102a3b}
-#app .brand .mark{width:46px;height:46px;border-radius:50%;background:#081522 url('/CIP.webp') center/contain no-repeat;border:1px solid #725f2f;font-size:0;flex:none}
+#app .brand .mark{width:46px;height:46px;border-radius:50%;background:#081522 url('CIP.webp') center/contain no-repeat;border:1px solid #725f2f;font-size:0;flex:none}
 #app .brand b{font-size:15px;letter-spacing:1.3px}
 #app .brand span{display:block;color:var(--gold);font-size:8px;letter-spacing:1.2px;margin-top:2px}
 #app .brand i{display:block;color:#71879a;font-size:8px;line-height:1.4;font-style:normal;letter-spacing:.6px;margin-top:3px}
@@ -206,7 +206,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;back
 #app .profile-page .profile-hero{display:grid;grid-template-columns:300px minmax(0,1fr);gap:13px;align-items:stretch}
 #app .profile-page .profile-card{border:1px solid var(--line);background:linear-gradient(145deg,#0a1b2a,#071421);border-radius:12px;box-shadow:none}
 #app .profile-page .profile-photo-card{padding:26px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
-#app .profile-page .avatar-lg{width:112px;height:112px;margin:0 auto 15px;border-radius:50%;border:2px solid var(--gold);background:#081522 url('/CIP.webp') center/contain no-repeat;overflow:hidden;display:grid;place-items:center;box-shadow:0 0 0 5px rgba(217,184,92,.045)}
+#app .profile-page .avatar-lg{width:112px;height:112px;margin:0 auto 15px;border-radius:50%;border:2px solid var(--gold);background:#081522 url('CIP.webp') center/contain no-repeat;overflow:hidden;display:grid;place-items:center;box-shadow:0 0 0 5px rgba(217,184,92,.045)}
 #app .profile-page .avatar-lg img{width:100%;height:100%;object-fit:cover}
 #app .profile-page .avatar-fallback{font-size:34px;font-weight:800;color:var(--gold)}
 #app .profile-page .profile-name{font-size:18px;font-weight:800;margin:0;color:var(--text)}
@@ -247,7 +247,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;back
 #app .modal .field input,#app .modal .field select{background:#071624;border-color:#21475e;color:#edf2f6}
 
 /* subtle logo watermark on application background, not over content */
-#app main:after{content:"";position:fixed;right:4%;bottom:-4%;width:360px;height:360px;background:url('/CIP.webp') center/contain no-repeat;opacity:.045;pointer-events:none;z-index:-1}
+#app main:after{content:"";position:fixed;right:4%;bottom:-4%;width:360px;height:360px;background:url('CIP.webp') center/contain no-repeat;opacity:.045;pointer-events:none;z-index:-1}
 
 /* MOBILE */
 @media(max-width:1100px){
@@ -385,7 +385,7 @@ body:before{display:none!important}
   transform:translateY(-50%);
   width:min(47vw,620px);
   height:min(47vw,620px);
-  background:url('/CIP.webp') center/contain no-repeat;
+  background:url('CIP.webp') center/contain no-repeat;
   opacity:.25;
   filter:drop-shadow(0 0 28px rgba(216,180,91,.08));
   pointer-events:none;
@@ -577,7 +577,7 @@ main .btn:not(.green):not(.red):not(.gray){
   bottom:-55px;
   width:270px;
   height:270px;
-  background:url('/CIP.webp') center/contain no-repeat;
+  background:url('CIP.webp') center/contain no-repeat;
   opacity:.055;
   pointer-events:none;
   z-index:0;
@@ -632,7 +632,7 @@ main .btn:not(.green):not(.red):not(.gray){
   transform:translateY(-50%);
   width:min(46vw,600px);
   height:min(46vw,600px);
-  background:url("/CIP.webp") center/contain no-repeat;
+  background:url("CIP.webp") center/contain no-repeat;
   opacity:.23;
   pointer-events:none;
   z-index:0;
@@ -649,7 +649,7 @@ main .btn:not(.green):not(.red):not(.gray){
   height:42px;
   flex:0 0 42px;
   border-radius:50%;
-  background:#091523 url("/CIP.webp") center/contain no-repeat !important;
+  background:#091523 url("CIP.webp") center/contain no-repeat !important;
   border:1px solid rgba(216,180,91,.45) !important;
   color:transparent !important;
 }
@@ -891,7 +891,7 @@ body{color:var(--r-text)!important}
   height:48px!important;
   min-width:48px!important;
   border-radius:50%!important;
-  background:#071523 url('/CIP.webp') center/contain no-repeat!important;
+  background:#071523 url('CIP.webp') center/contain no-repeat!important;
   color:transparent!important;
   border:1px solid rgba(216,180,91,.48)!important;
   box-shadow:0 0 0 4px rgba(216,180,91,.035),0 8px 22px rgba(0,0,0,.25)!important;
@@ -1196,7 +1196,7 @@ main .btn:not(.green):not(.red):not(.gray){
   bottom:28px;
   width:300px;
   height:300px;
-  background:url('/CIP.webp') center/contain no-repeat;
+  background:url('CIP.webp') center/contain no-repeat;
   opacity:.045;
   pointer-events:none;
   z-index:0;
@@ -2136,7 +2136,7 @@ html,body,#app{background:var(--cpi-bg)!important}
   position:relative!important;
   background:
     linear-gradient(90deg,rgba(2,10,17,.98) 0%,rgba(2,10,17,.86) 36%,rgba(2,10,17,.48) 69%,rgba(2,10,17,.83) 100%),
-    url('/hero-cip.webp') center/cover no-repeat!important;
+    url('hero-cip.webp') center/cover no-repeat!important;
 }
 #dashboard .cpi-hero:after{
   content:"";position:absolute;inset:0;pointer-events:none;
@@ -2388,7 +2388,7 @@ html,body,#app{background:var(--cpi-bg)!important}
   min-height:196px!important;
   background:
     linear-gradient(90deg,rgba(2,10,17,.98) 0%,rgba(2,10,17,.78) 43%,rgba(2,10,17,.38) 100%),
-    url('/hero-cip.webp') center/cover no-repeat!important;
+    url('hero-cip.webp') center/cover no-repeat!important;
 }
 #dashboard .cpi-hero-copy{padding:27px 30px!important}
 #dashboard .cpi-hero h1{font-size:31px!important}
@@ -2863,7 +2863,7 @@ html,body,#app{background:#020a12!important;color:var(--cpi-text)!important}
   overflow:hidden!important;
   background:
     linear-gradient(90deg,rgba(2,10,17,.97) 0%,rgba(2,10,17,.78) 43%,rgba(2,10,17,.35) 100%),
-    url('/hero-cip.webp') center/cover no-repeat!important;
+    url('hero-cip.webp') center/cover no-repeat!important;
 }
 #dashboard .cpi-hero-copy{
   padding:28px 30px!important;
@@ -3622,7 +3622,7 @@ html,body,#app{background:#020a12!important;color:var(--cpi-text)!important}
 <div id="app" class="app hidden">
 <aside class="side">
   <div class="brand brand-approved">
-  <div class="brand-logo"><img src="/CIP.webp" alt="CIP"></div>
+  <div class="brand-logo"><img src="CIP.webp" alt="CIP"></div>
   <div class="brand-copy"><b>CORPO DE<br>INSTRUTORES</b><span>SISTEMA DE GESTÃO</span></div>
 </div>
   <div class="nav">
@@ -3687,7 +3687,7 @@ html,body,#app{background:#020a12!important;color:var(--cpi-text)!important}
         dos cursos de forma rápida e eficiente.
       </p>
     </div>
-    <img class="cpi-hero-logo" src="/CIP.webp" alt="Corpo de Instrutores Policiais">
+    <img class="cpi-hero-logo" src="CIP.webp" alt="Corpo de Instrutores Policiais">
   </div>
 
   <div class="cpi-kpis">
@@ -4358,7 +4358,7 @@ html,body,#app{background:#020a12!important;color:var(--cpi-text)!important}
       <div class="recruitment-gold-line"></div>
       <p class="recruitment-description">Gerencie marcações, acompanhe a equipe, registre presenças<br>e controle os resultados dos conscritos de forma rápida e eficiente.</p>
     </div>
-    <img class="recruitment-hero-logo" src="/CIP.webp" alt="Corpo de Instrutores Policiais">
+    <img class="recruitment-hero-logo" src="CIP.webp" alt="Corpo de Instrutores Policiais">
   </div>
 
   <div class="recruitment-cpi-kpis">
@@ -7652,7 +7652,7 @@ function exportCourseParticipantsTableCSV(){
   padding:28px!important;
   background:
     linear-gradient(180deg,rgba(1,7,13,.08) 0%,rgba(1,7,13,.02) 55%,rgba(1,7,13,.30) 100%),
-    url('/login-bg.webp') center center / cover no-repeat!important;
+    url('login-bg.webp') center center / cover no-repeat!important;
 }
 #auth.auth::before,
 #auth.auth::after{
@@ -7873,7 +7873,7 @@ function exportCourseParticipantsTableCSV(){
 
 /* RECRUITMENT DASHBOARD — aligned visually with the main instructor dashboard, fully scoped */
 .recruitment-dashboard-page{padding-bottom:30px}
-.recruitment-dashboard-page .recruitment-hero{height:208px;border:1px solid #19384e;border-radius:9px;overflow:hidden;position:relative;background:linear-gradient(90deg,rgba(2,10,17,.98) 0%,rgba(2,10,17,.86) 36%,rgba(2,10,17,.48) 69%,rgba(2,10,17,.83) 100%),url('/hero-cip.webp') center/cover no-repeat}
+.recruitment-dashboard-page .recruitment-hero{height:208px;border:1px solid #19384e;border-radius:9px;overflow:hidden;position:relative;background:linear-gradient(90deg,rgba(2,10,17,.98) 0%,rgba(2,10,17,.86) 36%,rgba(2,10,17,.48) 69%,rgba(2,10,17,.83) 100%),url('hero-cip.webp') center/cover no-repeat}
 .recruitment-dashboard-page .recruitment-hero:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 65%,rgba(2,10,17,.42) 100%)}
 .recruitment-hero-copy{position:relative;z-index:2;padding:28px 30px}.recruitment-eyebrow{color:var(--cpi-gold);font-size:11px;font-weight:900;letter-spacing:2px}.recruitment-hero h1{margin:7px 0 4px;font-size:32px;line-height:1.05;color:#eef2f5}.recruitment-hero h1 span{color:var(--cpi-gold)}.recruitment-hero h1 #recruitmentGreeting{color:#f2f5f7}.recruitment-hero h1 #recruitmentUserName{color:var(--cpi-gold)}.recruitment-hero p{margin:0;font-size:15px;color:#d2d9de}.recruitment-gold-line{width:47px;height:2px;background:var(--cpi-gold);margin:17px 0 14px}.recruitment-description{line-height:1.65;font-size:13px!important;color:#bdc8d0!important}.recruitment-hero-logo{position:absolute;right:35px;top:50%;transform:translateY(-50%);width:164px;height:164px;object-fit:contain;z-index:3;filter:drop-shadow(0 8px 18px rgba(0,0,0,.65))}
 .recruitment-cpi-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:-1px;position:relative;z-index:4}.recruitment-cpi-kpi{min-height:92px;border:1px solid #1a3548;border-radius:9px;background:linear-gradient(145deg,#071823,#04101a);display:flex;align-items:center;gap:13px;padding:15px}.recruitment-cpi-kpi .rk-icon{width:53px;height:53px;border-radius:50%;display:grid;place-items:center;border:1px solid currentColor;background:rgba(0,0,0,.08);flex:0 0 auto}.recruitment-cpi-kpi .rk-icon svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.recruitment-cpi-kpi.blue{color:var(--cpi-blue)}.recruitment-cpi-kpi.gold{color:var(--cpi-gold)}.recruitment-cpi-kpi.red{color:var(--cpi-red)}.recruitment-cpi-kpi.purple{color:var(--cpi-purple)}.recruitment-cpi-kpi strong{display:block;color:#eef2f5;font-size:27px;line-height:1}.recruitment-cpi-kpi b{display:block;color:#edf1f4;font-size:12px;margin-top:5px}.recruitment-cpi-kpi span{display:block;color:#8999a7;font-size:10px;margin-top:4px}
