@@ -4671,20 +4671,29 @@ async function api(url,opt={}){
   const path=u.pathname;
   const qs=new URLSearchParams(u.search);
   const sessionToken=token||localStorage.getItem('instrutores_token')||'';
-  if(method==='GET'){
-    qs.set('path',path);
-    if(sessionToken)qs.set('token',sessionToken);
-    const r=await fetch(base+'/?'+qs.toString(),{method:'GET',cache:'no-store'});
-    const text=await r.text();let d={};try{d=text?JSON.parse(text):{}}catch{}
-    if(d&&d.error)throw Error(d.error);if(!r.ok)throw Error(`Erro HTTP ${r.status}`);return d;
-  }
+
   let body={};
-  if(opt.body){try{body=typeof opt.body==='string'?JSON.parse(opt.body):opt.body}catch{body={raw:opt.body}}}
-  body.path=path;body.method=method;body.token=sessionToken;
-  u.searchParams.forEach((v,k)=>{if(body[k]===undefined)body[k]=v});
-  const r=await fetch(base,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)});
+  if(opt.body){
+    try{body=typeof opt.body==='string'?JSON.parse(opt.body):opt.body}
+    catch{body={raw:opt.body}}
+  }
+
+  qs.set('path',path);
+  qs.set('method',method);
+  qs.set('_ts',String(Date.now()));
+  if(sessionToken)qs.set('token',sessionToken);
+  if(Object.keys(body).length)qs.set('data',JSON.stringify(body));
+
+  const requestUrl=base+'/?'+qs.toString();
+  if(requestUrl.length>7500){
+    throw Error('Esta operação possui dados demais para o transporte atual. A função será migrada para upload direto em uma próxima etapa.');
+  }
+
+  const r=await fetch(requestUrl,{method:'GET',cache:'no-store',redirect:'follow'});
   const text=await r.text();let d={};try{d=text?JSON.parse(text):{}}catch{}
-  if(d&&d.error)throw Error(d.error);if(!r.ok)throw Error(`Erro HTTP ${r.status}`);return d;
+  if(d&&d.error)throw Error(d.error);
+  if(!r.ok)throw Error(`Erro HTTP ${r.status}`);
+  return d;
 }
 
 let adminResetRequestId=null;
