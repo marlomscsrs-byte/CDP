@@ -2,10 +2,10 @@
 <html lang="pt-BR">
 <head>
   <!-- CIP favicon -->
-  <link rel="icon" href="./favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="./favicon-180.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -3622,7 +3622,7 @@ html,body,#app{background:#020a12!important;color:var(--cpi-text)!important}
 <div id="app" class="app hidden">
 <aside class="side">
   <div class="brand brand-approved">
-  <div class="brand-logo"><img src="./CIP.webp" alt="CIP"></div>
+  <div class="brand-logo"><img src="/CIP.webp" alt="CIP"></div>
   <div class="brand-copy"><b>CORPO DE<br>INSTRUTORES</b><span>SISTEMA DE GESTÃO</span></div>
 </div>
   <div class="nav">
@@ -3687,7 +3687,7 @@ html,body,#app{background:#020a12!important;color:var(--cpi-text)!important}
         dos cursos de forma rápida e eficiente.
       </p>
     </div>
-    <img class="cpi-hero-logo" src="./CIP.webp" alt="Corpo de Instrutores Policiais">
+    <img class="cpi-hero-logo" src="/CIP.webp" alt="Corpo de Instrutores Policiais">
   </div>
 
   <div class="cpi-kpis">
@@ -4358,7 +4358,7 @@ html,body,#app{background:#020a12!important;color:var(--cpi-text)!important}
       <div class="recruitment-gold-line"></div>
       <p class="recruitment-description">Gerencie marcações, acompanhe a equipe, registre presenças<br>e controle os resultados dos conscritos de forma rápida e eficiente.</p>
     </div>
-    <img class="recruitment-hero-logo" src="./CIP.webp" alt="Corpo de Instrutores Policiais">
+    <img class="recruitment-hero-logo" src="/CIP.webp" alt="Corpo de Instrutores Policiais">
   </div>
 
   <div class="recruitment-cpi-kpis">
@@ -4664,7 +4664,28 @@ async function submitPasswordRecovery(){
 }
 
 function authTab(x){$("loginBox").classList.toggle("hidden",x!=="login");$("regBox").classList.toggle("hidden",x!=="register");$("tLogin").classList.toggle("active",x==="login");$("tReg").classList.toggle("active",x==="register")}
-async function api(url,opt={}){const base=(window.CDP_CONFIG&&window.CDP_CONFIG.API_BASE_URL)||"";const target=/^https?:\/\//i.test(url)?url:(base+url);opt.headers={...(opt.headers||{}), "Content-Type":"application/json",...(token?{"Authorization":"Bearer "+token}:{})};const r=await fetch(target,opt);const text=await r.text();let d={};try{d=text?JSON.parse(text):{}}catch{}if(!r.ok)throw Error(d.error||`Erro HTTP ${r.status}`);return d}
+async function api(url,opt={}){
+  const base=String(window.CDP_CONFIG?.API_BASE_URL||'').replace(/\/$/,'');
+  const method=String(opt.method||'GET').toUpperCase();
+  const u=new URL(String(url||''),window.location.href);
+  const path=u.pathname;
+  const qs=new URLSearchParams(u.search);
+  const sessionToken=token||localStorage.getItem('instrutores_token')||'';
+  if(method==='GET'){
+    qs.set('path',path);
+    if(sessionToken)qs.set('token',sessionToken);
+    const r=await fetch(base+'/?'+qs.toString(),{method:'GET',cache:'no-store'});
+    const text=await r.text();let d={};try{d=text?JSON.parse(text):{}}catch{}
+    if(d&&d.error)throw Error(d.error);if(!r.ok)throw Error(`Erro HTTP ${r.status}`);return d;
+  }
+  let body={};
+  if(opt.body){try{body=typeof opt.body==='string'?JSON.parse(opt.body):opt.body}catch{body={raw:opt.body}}}
+  body.path=path;body.method=method;body.token=sessionToken;
+  u.searchParams.forEach((v,k)=>{if(body[k]===undefined)body[k]=v});
+  const r=await fetch(base+'/',{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(body)});
+  const text=await r.text();let d={};try{d=text?JSON.parse(text):{}}catch{}
+  if(d&&d.error)throw Error(d.error);if(!r.ok)throw Error(`Erro HTTP ${r.status}`);return d;
+}
 
 let adminResetRequestId=null;
 let adminResetRequestName="Usuário";
@@ -4865,11 +4886,11 @@ function setupPresenceUI(){
   btn.onclick=async(e)=>{e.stopPropagation();const show=!panel.classList.contains("show");panel.classList.toggle("show",show);btn.setAttribute("aria-expanded",show?"true":"false");if(show)await loadPresence();};
   document.addEventListener("click",e=>{if(!e.target.closest(".presence-wrap")){panel.classList.remove("show");btn.setAttribute("aria-expanded","false");}});
 }
-function logout(){if(window.notificationTimer)clearInterval(window.notificationTimer);if(window.pendingTimer)clearInterval(window.pendingTimer);if(presenceTimer)clearInterval(presenceTimer);if(token){fetch(((window.CDP_CONFIG&&window.CDP_CONFIG.API_BASE_URL)||"")+"/api/presence/offline",{method:"POST",keepalive:true,headers:{"Content-Type":"application/json","Authorization":"Bearer "+token},body:"{}"}).catch(()=>{});}localStorage.removeItem("instrutores_token");token="";location.reload()}
+function logout(){if(window.notificationTimer)clearInterval(window.notificationTimer);if(window.pendingTimer)clearInterval(window.pendingTimer);if(presenceTimer)clearInterval(presenceTimer);if(token){api("/api/presence/offline",{method:"POST",body:"{}"}).catch(()=>{});}localStorage.removeItem("instrutores_token");token="";location.reload()}
 async function boot(){if(!token)return;try{me=await api("/api/me");updateCapNav();enter()}catch{localStorage.removeItem("instrutores_token")}}
 
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&token)sendPresenceHeartbeat();});
-window.addEventListener("beforeunload",()=>{if(!token)return;try{navigator.sendBeacon("/api/presence/offline",new Blob([JSON.stringify({})],{type:"application/json"}));}catch{}});
+window.addEventListener("beforeunload",()=>{if(!token)return;try{navigator.sendBeacon((window.CDP_CONFIG?.API_BASE_URL||"")+"/?path=%2Fapi%2Fpresence%2Foffline&token="+encodeURIComponent(token),new Blob([JSON.stringify({path:"/api/presence/offline",method:"POST",token})],{type:"text/plain"}));}catch{}});
 function twitchAdminEsc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function twitchAdminDate(v){try{return new Intl.DateTimeFormat('pt-BR',{dateStyle:'medium',timeStyle:'short'}).format(new Date(v));}catch{return String(v||'—');}}
 async function loadTwitchAdmin(){
